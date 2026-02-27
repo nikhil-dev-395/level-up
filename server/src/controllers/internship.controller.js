@@ -1,3 +1,5 @@
+const Internship = require("../models/internship.model");
+
 exports.createInternship = async (req, res) => {
   try {
     const {
@@ -95,7 +97,3 @@ exports.getInternship = async (req, res) => {
     });
   }
 };
-
-
-
-

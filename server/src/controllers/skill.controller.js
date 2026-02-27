@@ -1,7 +1,10 @@
+const Skill = require("../models/skills.model");
+const logger = require("../utils/logger");
+
 exports.createSkill = async (req, res) => {
   try {
     const { url, duration, title, provider, teacher, category } = req.body;
-
+    console.log({ url, duration, title, provider, teacher, category });
     if (!url) {
       return res.status(400).json({
         message: "url is required",
@@ -51,12 +54,15 @@ exports.createSkill = async (req, res) => {
 
     await skill.save();
 
+    console.log({ skill });
     return res.status(200).json({
       message: "skill created successfully",
       success: true,
       data: skill,
     });
   } catch (error) {
+    logger.error(error);
+    console.log(error);
     return res.status(500).json({
       message: "internal server error",
       success: false,
@@ -89,7 +95,7 @@ exports.getSkills = async (req, res) => {
 
 exports.updateSkillProgress = async (req, res) => {
   try {
-    const { enrollId } = req.params;
+    const { enrollId } = req.body;
     const { progress } = req.body;
 
     if (!progress) {

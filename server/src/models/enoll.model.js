@@ -18,6 +18,6 @@ const enrollSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-const User = mongoose.model("Enroll", enrollSchema);
+const Enroll = mongoose.model("Enroll", enrollSchema);
 
 module.exports = User;

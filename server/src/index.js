@@ -26,14 +26,6 @@ app.get("/", (req, res) => {
   return res.status(200).json({ message: "ok" });
 });
 
-app.use((err, req, res, next) => {
-  logger.error(err);
-  const statusCode = err?.statusCode || 500;
-  const errorMessage = err?.message || "Internal Server Error";
-  res
-    .status(statusCode)
-    .json({ error: errorMessage, success: false, data: null });
-});
 connectDB()
   .then(() => {
     app.listen(ENV.PORT, () => {

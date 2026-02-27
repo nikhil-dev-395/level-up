@@ -50,6 +50,6 @@ const internshipSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-const User = mongoose.model("Internship", internshipSchema);
+const Internship = mongoose.model("Internship", internshipSchema);
 
-module.exports = User;
+module.exports = Internship;

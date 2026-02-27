@@ -40,6 +40,6 @@ const skillsSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-const User = mongoose.model("Skill", skillsSchema);
+const Skill = mongoose.model("Skill", skillsSchema);
 
-module.exports = User;
+module.exports = Skill;
