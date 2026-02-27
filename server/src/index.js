@@ -9,6 +9,7 @@ const { default: helmet } = require("helmet");
 const authRouter = require("./routes/auth.route");
 const connectDB = require("./utils/connection");
 const skillRouter = require("./routes/skill.route");
+const internshipRouter = require("./routes/internship.route");
 const app = express();
 
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(helmet());
 
 app.use("/api/auth", authRouter);
 app.use("/api/skill", skillRouter);
+app.use("/api/internship", internshipRouter);
 
 app.get("/", (req, res) => {
   return res.status(200).json({ message: "ok" });
