@@ -67,7 +67,11 @@ exports.createSkill = async (req, res) => {
 
 exports.getSkills = async (req, res) => {
   try {
-    const skills = await Skill.find();
+    const { category } = req.query;
+
+    const skills = await Skill.find(category ? { category } : {})
+      .sort({ createdAt: -1 })
+      .lean();
 
     return res.status(200).json({
       message: "skills fetched successfully",
