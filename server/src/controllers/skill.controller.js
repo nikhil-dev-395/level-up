@@ -86,3 +86,9 @@ exports.getSkills = async (req, res) => {
     });
   }
 };
+
+
+
+exports.updateSkillProgress = async (req, res) => {
+    try{}catch(error){
+}
