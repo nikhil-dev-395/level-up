@@ -87,8 +87,70 @@ exports.getSkills = async (req, res) => {
   }
 };
 
-
-
 exports.updateSkillProgress = async (req, res) => {
-    try{}catch(error){
-}
+  try {
+    const { enrollId } = req.params;
+    const { progress } = req.body;
+
+    if (!progress) {
+      return res.status(400).json({
+        message: "progress is required",
+        success: false,
+        data: null,
+      });
+    }
+
+    await Enroll.findByIdAndUpdate(enrollId, { progress });
+
+    return res.status(200).json({
+      message: "skill progress updated successfully",
+      success: true,
+      data: null,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "internal server error",
+      success: false,
+      data: null,
+    });
+  }
+};
+
+exports.createEnroll = (req, res) => {
+  try {
+    const { skillId } = req.params;
+    const { userId } = req.body;
+
+    if (!skillId) {
+      return res.status(400).json({
+        message: "skillId is required",
+        success: false,
+        data: null,
+      });
+    }
+
+    if (!userId) {
+      return res.status(400).json({
+        message: "userId is required",
+        success: false,
+        data: null,
+      });
+    }
+
+    const enroll = new Enroll({ skillId, userId });
+
+    enroll.save();
+
+    return res.status(200).json({
+      message: "enrolled successfully",
+      success: true,
+      data: enroll,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "internal server error",
+      success: false,
+      data: null,
+    });
+  }
+};
