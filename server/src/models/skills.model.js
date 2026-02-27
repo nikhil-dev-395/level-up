@@ -28,6 +28,14 @@ const skillsSchema = new mongoose.Schema(
       max: 500,
       default: null,
     },
+
+    category: {
+      type: String,
+      min: 1,
+      max: 100,
+      enum: ["programming", "design", "marketing", "other"],
+      default: "programming",
+    },
   },
   { timestamps: true },
 );
