@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const ENV = require("./utils/env");
 const logger = require("./utils/logger");
@@ -39,3 +41,5 @@ connectDB()
   .catch((err) => {
     logger.error(err?.message);
   });
+
+module.exports = app;
