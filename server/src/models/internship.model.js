@@ -15,13 +15,7 @@ const internshipSchema = new mongoose.Schema(
       min: 3,
       max: 1000,
     },
-    provider: {
-      type: String,
-      min: 7,
-      max: 200,
-      enum: ["youtube", "udemy", "coursera", "edx", "other"],
-      default: "youtube",
-    },
+
     location: {
       type: String,
       min: 1,
@@ -39,6 +33,18 @@ const internshipSchema = new mongoose.Schema(
     minAge: {
       type: Number,
       default: 18,
+    },
+    contactEmail: {
+      type: String,
+      min: 7,
+      max: 200,
+    },
+    category: {
+      type: String,
+      min: 1,
+      max: 100,
+      enum: ["programming", "design", "marketing", "other"],
+      default: "programming",
     },
   },
   { timestamps: true },
